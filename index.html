@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Sainath Alampally – Full Stack Developer at Integrated Information Solutions, Hyderabad. Spring Boot, Angular, ERP, HRMS, GPS, WebRTC."/>
+  <meta name="keywords" content="Sainath Alampally, MaybeSainadh, Full Stack Developer, Java, Spring Boot, Angular, Hyderabad"/>
+  <meta name="author" content="Sainath Alampally"/>
+  <title>Sainath Alampally · MaybeSainadh</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <style>
+    :root{
+      --bg:#04040a;--bg2:#080814;--gc:rgba(8,8,20,0.78);--gc2:rgba(255,255,255,0.05);
+      --cyan:#00e5ff;--purple:#7c3aed;--blue:#1e40af;--green:#10b981;
+      --glow:rgba(0,229,255,0.13);--glow2:rgba(124,58,237,0.13);
+      --t1:#f0f4ff;--t2:#8892a4;--t3:#4a5568;
+      --b:rgba(0,229,255,0.13);--bh:rgba(0,229,255,0.38);
+      --gb:rgba(255,255,255,0.055);
+      --fd:'Space Grotesk',sans-serif;--fb:'Inter',sans-serif;--fm:'JetBrains Mono',monospace;
+      --r:16px;--rs:8px;--tr:0.32s cubic-bezier(.4,0,.2,1);
+    }
+    [data-theme=light]{--bg:#f5f7ff;--bg2:#eef1ff;--gc:rgba(255,255,255,0.88);--t1:#0a0a1a;--t2:#4a5568;--t3:#9ca3af;--b:rgba(124,58,237,0.15);--gc2:rgba(124,58,237,0.06);--gb:rgba(124,58,237,0.09);}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:var(--fb);background:var(--bg);color:var(--t1);overflow-x:hidden;cursor:none}
+    body.loaded #ls{opacity:0;pointer-events:none}
+    ::selection{background:rgba(0,229,255,.22);color:#fff}
+    a{color:inherit;text-decoration:none}
+
+    /* LOADING */
+    #ls{position:fixed;inset:0;z-index:9999;background:#04040a;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .6s ease}
+    .ll{font-family:var(--fd);font-size:3.5rem;font-weight:700;background:linear-gradient(135deg,#00e5ff,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.5rem;animation:pulse 1.5s ease-in-out infinite}
+    .ls2{font-family:var(--fm);font-size:.8rem;color:var(--t3);margin-bottom:2rem;letter-spacing:.15em}
+    .lb{width:220px;height:2px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden}
+    .lf{height:100%;background:linear-gradient(90deg,#00e5ff,#7c3aed);animation:lf 2s ease forwards}
+    @keyframes lf{from{width:0}to{width:100%}}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.45}}
+
+    /* CURSOR */
+    #cur{position:fixed;top:0;left:0;width:12px;height:12px;background:var(--cyan);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .18s,height .18s;mix-blend-mode:difference}
+    #curR{position:fixed;top:0;left:0;width:38px;height:38px;border:1.5px solid rgba(0,229,255,.45);border-radius:50%;pointer-events:none;z-index:9997;transform:translate(-50%,-50%);transition:width .2s,height .2s}
+
+    /* SCROLL BAR */
+    #sp{position:fixed;top:0;left:0;right:0;height:2px;z-index:9990;background:linear-gradient(90deg,#00e5ff,#7c3aed);transform-origin:left;transform:scaleX(0)}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.9rem 2rem;display:flex;align-items:center;justify-content:space-between;background:rgba(4,4,10,.82);backdrop-filter:blur(22px);border-bottom:1px solid var(--gb);transition:var(--tr)}
+    .nlogo{font-family:var(--fd);font-size:1.45rem;font-weight:700;background:linear-gradient(135deg,#00e5ff,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:flex;align-items:center;gap:.5rem}
+    .nbadge{font-size:.68rem;background:linear-gradient(135deg,#00e5ff,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;border:1px solid var(--b);padding:2px 8px;border-radius:100px;font-family:var(--fm)}
+    .nl{display:flex;align-items:center;gap:1.75rem;list-style:none}
+    .nl a{font-size:.85rem;font-weight:500;color:var(--t2);transition:color var(--tr);position:relative}
+    .nl a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--cyan);transition:width var(--tr)}
+    .nl a:hover{color:var(--cyan)}.nl a:hover::after{width:100%}
+    .nact{display:flex;align-items:center;gap:.85rem}
+    .btnav{padding:.45rem 1.2rem;border-radius:100px;font-size:.82rem;font-weight:500;border:1px solid var(--b);background:transparent;color:var(--t1);cursor:none;transition:var(--tr)}
+    .btnav:hover{border-color:var(--cyan);color:var(--cyan);background:var(--glow)}
+    .tgt{width:34px;height:34px;border-radius:50%;border:1px solid var(--b);background:transparent;color:var(--t2);display:flex;align-items:center;justify-content:center;cursor:none;transition:var(--tr);font-size:.88rem}
+    .tgt:hover{border-color:var(--cyan);color:var(--cyan)}
+    .ham{display:none;flex-direction:column;gap:5px;cursor:none;background:none;border:none;padding:4px}
+    .ham span{display:block;width:22px;height:2px;background:var(--t1);border-radius:2px;transition:var(--tr)}
+
+    /* CANVAS */
+    #bgc{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+
+    /* MOBILE MENU */
+    .mm{display:none;position:fixed;inset:0;z-index:99;background:rgba(4,4,10,.97);flex-direction:column;align-items:center;justify-content:center;gap:2rem;backdrop-filter:blur(20px)}
+    .mm.open{display:flex}
+    .mm a{font-family:var(--fd);font-size:2rem;font-weight:700;color:var(--t2);transition:color var(--tr)}
+    .mm a:hover{color:var(--cyan)}
+    .mmc{position:absolute;top:1.5rem;right:2rem;font-size:1.5rem;color:var(--t3);background:none;border:none;cursor:none}
+
+    /* SECTIONS */
+    section{padding:6rem 0;position:relative}
+    .cont{max-width:1200px;margin:0 auto;padding:0 2rem}
+    .slbl{font-family:var(--fm);font-size:.73rem;font-weight:600;color:var(--cyan);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.7rem;display:flex;align-items:center;gap:.7rem}
+    .slbl::before{content:'';width:22px;height:1px;background:var(--cyan)}
+    .stit{font-family:var(--fd);font-size:clamp(2rem,4vw,3.2rem);font-weight:700;line-height:1.15;margin-bottom:1rem}
+    .stit span{background:linear-gradient(135deg,#00e5ff,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .ssub{font-size:1.05rem;color:var(--t2);max-width:580px;line-height:1.75}
+
+    /* GLASS CARD */
+    .gc{background:var(--gc);border:1px solid var(--gb);border-radius:var(--r);backdrop-filter:blur(20px);transition:var(--tr)}
+    .gc:hover{border-color:var(--bh);box-shadow:0 0 40px rgba(0,229,255,.07);transform:translateY(-2px)}
+
+    /* BUTTONS */
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.72rem 1.65rem;border-radius:100px;font-family:var(--fd);font-size:.88rem;font-weight:600;cursor:none;transition:var(--tr);border:none;position:relative;overflow:hidden}
+    .btn::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.04);transform:translateX(-100%);transition:transform .3s ease}
+    .btn:hover::before{transform:translateX(0)}
+    .btnp{background:linear-gradient(135deg,#00e5ff,#7c3aed);color:#fff}
+    .btnp:hover{box-shadow:0 0 32px rgba(0,229,255,.3);transform:translateY(-2px)}
+    .btns{background:transparent;color:var(--t1);border:1px solid var(--b)}
+    .btns:hover{border-color:var(--cyan);color:var(--cyan);background:var(--glow)}
+    .btng{background:transparent;color:var(--t2);border:1px solid var(--gb);padding:.48rem .95rem}
+    .btng:hover{color:var(--cyan);border-color:var(--bh)}
+
+    /* HERO */
+    #hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding-top:80px;position:relative}
+    .hi{text-align:center;position:relative;z-index:2}
+    .hg{font-family:var(--fm);font-size:.95rem;color:var(--cyan);margin-bottom:1.5rem;opacity:0;animation:fu .6s .3s forwards}
+    .hn{font-family:var(--fd);font-size:clamp(2.8rem,8vw,6.5rem);font-weight:700;line-height:1;letter-spacing:-.03em;margin-bottom:1.2rem;background:linear-gradient(135deg,#f0f4ff 0%,#00e5ff 40%,#7c3aed 80%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;opacity:0;animation:fu .7s .5s forwards}
+    .hr{font-size:clamp(.95rem,2.5vw,1.35rem);color:var(--t2);margin-bottom:2.5rem;min-height:2rem;opacity:0;animation:fu .7s .7s forwards}
+    #tt{color:var(--cyan);font-weight:600;font-family:var(--fd)}
+    .tc{color:var(--purple);animation:blink 1s infinite}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+    .hd{font-size:1rem;color:var(--t2);max-width:580px;margin:0 auto 2.8rem;line-height:1.8;opacity:0;animation:fu .7s .9s forwards}
+    .ha{display:flex;flex-wrap:wrap;gap:.9rem;justify-content:center;margin-bottom:2.8rem;opacity:0;animation:fu .7s 1.1s forwards}
+    .hs{display:flex;gap:.85rem;justify-content:center;opacity:0;animation:fu .7s 1.3s forwards}
+    .sl{width:44px;height:44px;border-radius:50%;border:1px solid var(--b);display:flex;align-items:center;justify-content:center;color:var(--t2);transition:var(--tr);font-size:1rem;position:relative;overflow:hidden}
+    .sl::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity var(--tr);border-radius:50%}
+    .sl:hover{transform:translateY(-4px) scale(1.1);border-color:var(--bh)}
+    .sl-gh:hover{background:rgba(255,255,255,.08);color:#fff}
+    .sl-li:hover{background:rgba(10,102,194,.2);color:#0a66c2;border-color:#0a66c2}
+    .sl-ig:hover{background:rgba(225,48,108,.15);color:#e1306c;border-color:#e1306c}
+    .sl-x:hover{background:rgba(255,255,255,.08);color:#fff}
+    .sl-wa:hover{background:rgba(37,211,102,.15);color:#25d366;border-color:#25d366}
+    .sl-em:hover{background:rgba(0,229,255,.1);color:var(--cyan);border-color:var(--cyan)}
+    .sl-ph:hover{background:rgba(0,229,255,.1);color:var(--cyan);border-color:var(--cyan)}
+    .hst{display:flex;gap:4rem;justify-content:center;margin-top:4.5rem;flex-wrap:wrap;opacity:0;animation:fu .7s 1.5s forwards}
+    .sti{text-align:center}
+    .stn{font-family:var(--fd);font-size:2.75rem;font-weight:700;background:linear-gradient(135deg,#00e5ff,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
+    .stl{font-size:.8rem;color:var(--t3);margin-top:.3rem;text-transform:uppercase;letter-spacing:.1em}
+    .scrollh{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;color:var(--t3);font-size:.72rem;animation:bounce 2s ease-in-out infinite}
+    .scl{width:1px;height:38px;background:linear-gradient(to bottom,var(--cyan),transparent)}
+    @keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+    @keyframes fu{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+    /* FLOATING WA BUTTON */
+    #wa-float{position:fixed;bottom:2rem;right:2rem;z-index:200;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#25d366,#128c7e);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.5rem;box-shadow:0 4px 20px rgba(37,211,102,.4);transition:var(--tr);cursor:none;text-decoration:none;animation:wapulse 2.5s ease-in-out infinite}
+    #wa-float:hover{transform:scale(1.12);box-shadow:0 6px 28px rgba(37,211,102,.6)}
+    @keyframes wapulse{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.4)}50%{box-shadow:0 4px 32px rgba(37,211,102,.65)}}
+    #wa-float .wa-tooltip{position:absolute;right:calc(100% + 12px);background:rgba(4,4,10,.95);border:1px solid var(--gb);color:var(--t1);font-size:.8rem;white-space:nowrap;padding:.4rem .85rem;border-radius:var(--rs);opacity:0;pointer-events:none;transition:opacity var(--tr)}
+    #wa-float:hover .wa-tooltip{opacity:1}
+
+    /* ABOUT */
+    #about .ag{display:grid;grid-template-columns:1fr 1.55fr;gap:3.5rem;align-items:start}
+    .avw{position:sticky;top:100px}
+    .avf{width:100%;aspect-ratio:1;border-radius:24px;background:linear-gradient(135deg,rgba(0,229,255,.1),rgba(124,58,237,.12));border:1px solid var(--b);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;font-size:5.5rem}
+    .avf::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent 60%,rgba(0,229,255,.08))}
+    .abbadges{display:flex;flex-wrap:wrap;gap:.45rem;margin:1.25rem 0}
+    .badge{font-family:var(--fm);font-size:.72rem;padding:.32rem .8rem;border-radius:100px;border:1px solid var(--b);color:var(--t2);background:var(--gc);transition:var(--tr)}
+    .badge:hover{border-color:var(--cyan);color:var(--cyan)}
+    .tl{list-style:none;padding:0}
+    .tli{padding-left:1.4rem;border-left:1px solid var(--b);margin-bottom:1.85rem;position:relative}
+    .tli::before{content:'';position:absolute;left:-5px;top:6px;width:8px;height:8px;border-radius:50%;background:var(--cyan)}
+    .tld{font-family:var(--fm);font-size:.72rem;color:var(--cyan);margin-bottom:.3rem}
+    .tlt{font-weight:600;margin-bottom:.22rem;font-family:var(--fd)}
+    .tls{font-size:.85rem;color:var(--t2)}
+
+    /* SKILLS */
+    .sg{display:grid;grid-template-columns:repeat(auto-fit,minmax(275px,1fr));gap:1.4rem}
+    .skgrp{padding:1.65rem}
+    .skgt{font-family:var(--fd);font-size:.9rem;font-weight:600;color:var(--cyan);margin-bottom:1.35rem;display:flex;align-items:center;gap:.5rem}
+    .ski{margin-bottom:.95rem}
+    .skr{display:flex;justify-content:space-between;align-items:center;margin-bottom:.35rem}
+    .skn{font-size:.84rem;color:var(--t2)}
+    .skp{font-family:var(--fm);font-size:.72rem;color:var(--cyan)}
+    .skbb{height:4px;background:rgba(255,255,255,.05);border-radius:4px;overflow:hidden}
+    .skbf{height:100%;border-radius:4px;background:linear-gradient(90deg,#00e5ff,#7c3aed);width:0;transition:width 1.2s cubic-bezier(.4,0,.2,1)}
+    .tcl{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:2.2rem}
+    .tt{font-family:var(--fm);font-size:.72rem;padding:.32rem .7rem;border-radius:var(--rs);border:1px solid var(--b);color:var(--t2);background:var(--gc);transition:var(--tr);cursor:pointer}
+    .tt:hover{border-color:var(--cyan);color:var(--cyan);background:var(--glow);transform:scale(1.06)}
+
+    /* EXPERIENCE */
+    .etl{position:relative;padding-left:2rem}
+    .etl::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,var(--cyan),var(--purple),transparent)}
+    .ec{margin-bottom:2.8rem;padding:1.85rem;position:relative}
+    .ec::before{content:'';position:absolute;left:-2.35rem;top:1.7rem;width:10px;height:10px;border-radius:50%;border:2px solid var(--cyan);background:var(--bg)}
+    .eh{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.9rem;margin-bottom:.9rem}
+    .eco{font-family:var(--fd);font-size:1.2rem;font-weight:700}
+    .ero{color:var(--cyan);font-size:.88rem;margin-top:.22rem}
+    .ep{font-family:var(--fm);font-size:.77rem;padding:.28rem .75rem;border-radius:100px;border:1px solid var(--b);color:var(--t3)}
+    .el{list-style:none;padding:0;margin:.9rem 0}
+    .el li{font-size:.88rem;color:var(--t2);padding:.38rem 0;padding-left:1.2rem;position:relative}
+    .el li::before{content:'▸';position:absolute;left:0;color:var(--cyan);font-size:.72rem}
+    .etgs{display:flex;flex-wrap:wrap;gap:.38rem;margin-top:.9rem}
+    .etg{font-family:var(--fm);font-size:.68rem;padding:.2rem .58rem;border-radius:var(--rs);background:rgba(0,229,255,.07);border:1px solid rgba(0,229,255,.18);color:var(--cyan)}
+
+    /* PROJECTS */
+    .pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:1.4rem}
+    .pc{padding:1.85rem;position:relative;overflow:hidden}
+    .pc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--cyan),var(--purple));transform:scaleX(0);transition:transform var(--tr);transform-origin:left}
+    .pc:hover::before{transform:scaleX(1)}
+    .pi{width:46px;height:46px;border-radius:var(--rs);background:linear-gradient(135deg,rgba(0,229,255,.12),rgba(124,58,237,.12));border:1px solid var(--b);display:flex;align-items:center;justify-content:center;font-size:1.45rem;margin-bottom:1.15rem}
+    .pt{font-family:var(--fd);font-size:1.1rem;font-weight:700;margin-bottom:.45rem}
+    .pd{font-size:.855rem;color:var(--t2);line-height:1.7;margin-bottom:1.15rem}
+    .pf{display:grid;grid-template-columns:1fr 1fr;gap:.38rem;margin-bottom:1.15rem}
+    .pfeat{font-size:.76rem;color:var(--t3);display:flex;align-items:center;gap:.35rem}
+    .pfeat::before{content:'✓';color:var(--cyan);font-size:.72rem}
+    .pft{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.65rem}
+    .plinks{display:flex;gap:.45rem}
+
+    /* API */
+    .apig{display:grid;grid-template-columns:1fr 1fr;gap:2.8rem;align-items:start}
+    .hm{display:flex;gap:.45rem;flex-wrap:wrap;margin:1rem 0}
+    .am{display:inline-flex;align-items:center;padding:.24rem .58rem;border-radius:var(--rs);font-family:var(--fm);font-size:.72rem;font-weight:700}
+    .get{background:rgba(16,185,129,.13);color:#10b981;border:1px solid rgba(16,185,129,.28)}
+    .post{background:rgba(59,130,246,.13);color:#3b82f6;border:1px solid rgba(59,130,246,.28)}
+    .put{background:rgba(245,158,11,.13);color:#f59e0b;border:1px solid rgba(245,158,11,.28)}
+    .del{background:rgba(239,68,68,.13);color:#ef4444;border:1px solid rgba(239,68,68,.28)}
+    .patch{background:rgba(139,92,246,.13);color:#8b5cf6;border:1px solid rgba(139,92,246,.28)}
+    .sg2{display:grid;grid-template-columns:1fr 1fr;gap:.45rem}
+    .si{padding:.68rem;border-radius:var(--rs);border:1px solid var(--b);background:var(--gc)}
+    .sc{font-family:var(--fm);font-weight:700;font-size:1.05rem}
+    .s2{color:#10b981}.s4{color:#f59e0b}.s5{color:#ef4444}
+    .sd{font-size:.72rem;color:var(--t3);margin-top:.18rem}
+    .al{background:var(--gc2);border:1px solid var(--gb);border-radius:var(--r);padding:1.4rem;font-family:var(--fm);font-size:.78rem}
+    .als{display:flex;align-items:center;gap:.9rem;padding:.68rem .95rem;margin-bottom:.45rem;border-radius:var(--rs);border:1px solid var(--b);background:rgba(0,229,255,.025);transition:var(--tr)}
+    .als:hover{border-color:var(--bh);background:var(--glow)}
+    .adl{background:var(--gc);border:1px solid var(--gb);border-radius:var(--r);padding:1.2rem;font-family:var(--fm);font-size:.77rem;overflow-x:auto;line-height:1.8;margin-top:1.25rem}
+    .kw{color:#c792ea}.str{color:#c3e88d}.fn{color:#82aaff}.ann{color:#f78c6c}.cm{color:#546e7a}
+    .ad{background:var(--gc);border:1px solid var(--gb);border-radius:var(--r);padding:1.25rem}
+    .alay{padding:1.1rem 1.35rem;border-radius:var(--rs);border:1px solid var(--b);background:var(--gc);position:relative;margin-bottom:.9rem}
+    .alay::after{content:'↓';position:absolute;bottom:-1.1rem;left:50%;transform:translateX(-50%);color:var(--t3);font-size:.82rem}
+    .alay:last-child::after{display:none}
+    .albl{font-family:var(--fm);font-size:.77rem;color:var(--cyan);margin-bottom:.2rem}
+    .adsc{font-size:.82rem;color:var(--t2)}
+
+    /* SB */
+    .sbf{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:.95rem;margin-top:2rem}
+    .sbfc{padding:1.2rem}
+    .sbfi{font-size:1.45rem;margin-bottom:.68rem}
+    .sbft{font-family:var(--fd);font-weight:600;margin-bottom:.35rem}
+    .sbfd{font-size:.8rem;color:var(--t2);line-height:1.6}
+
+    /* ANGULAR */
+    .atg{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:.95rem}
+    .at{padding:1.15rem;text-align:center;border-radius:var(--r);border:1px solid var(--b);background:var(--gc);transition:var(--tr);cursor:pointer}
+    .at:hover{border-color:rgba(220,38,38,.4);background:rgba(220,38,38,.05);transform:translateY(-3px)}
+    .ati{font-size:1.65rem;margin-bottom:.45rem}
+    .atn{font-size:.82rem;font-weight:600}
+
+    /* CERTS */
+    .certg{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.4rem}
+    .certc{padding:1.65rem;position:relative;overflow:hidden;cursor:pointer}
+    .certc:hover{border-color:rgba(16,185,129,.4) !important}
+    .certi{font-size:1.85rem;margin-bottom:.9rem}
+    .certt{font-family:var(--fd);font-size:1.02rem;font-weight:700;margin-bottom:.32rem}
+    .certis{font-size:.82rem;color:var(--cyan);margin-bottom:.68rem}
+    .certd{font-size:.8rem;color:var(--t2);line-height:1.6}
+    .certb{position:absolute;top:1rem;right:1rem;font-family:var(--fm);font-size:.62rem;padding:.22rem .55rem;border-radius:100px;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.28);color:#10b981}
+
+    /* CONTACT */
+    .cog{display:grid;grid-template-columns:1fr 1.2fr;gap:3.8rem;align-items:start}
+    .cls{display:flex;flex-direction:column;gap:.9rem;margin-top:1.85rem}
+    .cli{display:flex;align-items:center;gap:.9rem;padding:.95rem 1.15rem;border-radius:var(--rs);border:1px solid var(--b);background:var(--gc);transition:var(--tr);color:var(--t2)}
+    .cli:hover{border-color:var(--bh);color:var(--t1);transform:translateX(4px)}
+    .clico{width:34px;height:34px;display:flex;align-items:center;justify-content:center;border-radius:var(--rs);background:var(--glow);color:var(--cyan);flex-shrink:0}
+    .clt{font-size:.85rem}
+    .cll{font-size:.67rem;color:var(--t3);margin-bottom:.08rem;text-transform:uppercase;letter-spacing:.08em}
+    .fg{margin-bottom:1.15rem}
+    .fg label{display:block;font-size:.77rem;color:var(--t3);margin-bottom:.45rem;font-family:var(--fm);letter-spacing:.05em}
+    .fi{width:100%;padding:.82rem .95rem;background:var(--gc);border:1px solid var(--b);border-radius:var(--rs);color:var(--t1);font-family:var(--fb);font-size:.855rem;transition:var(--tr)}
+    .fi:focus{outline:none;border-color:var(--cyan);background:rgba(0,229,255,.025)}
+    .fi::placeholder{color:var(--t3)}
+    textarea.fi{resize:vertical;min-height:115px}
+
+    /* FOOTER */
+    footer{border-top:1px solid var(--gb);padding:2.8rem 0;text-align:center}
+    .fl{font-family:var(--fd);font-size:1.45rem;font-weight:700;background:linear-gradient(135deg,#00e5ff,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1.35rem;display:inline-block}
+    .fls{display:flex;gap:1.75rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.35rem}
+    .fls a{font-size:.85rem;color:var(--t3);transition:color var(--tr)}
+    .fls a:hover{color:var(--cyan)}
+    .fc{font-size:.77rem;color:var(--t3)}
+
+    /* MODAL */
+    .modal{display:none;position:fixed;inset:0;z-index:500;background:rgba(4,4,10,.88);backdrop-filter:blur(12px);align-items:center;justify-content:center;padding:1.5rem}
+    .modal.open{display:flex}
+    .mc{max-width:640px;width:100%;max-height:88vh;overflow-y:auto;border-radius:var(--r);border:1px solid var(--b);background:var(--bg2);padding:2rem;position:relative}
+    .mc::-webkit-scrollbar{width:4px}.mc::-webkit-scrollbar-track{background:transparent}.mc::-webkit-scrollbar-thumb{background:var(--b);border-radius:4px}
+    .mclose{position:absolute;top:1rem;right:1rem;background:none;border:none;color:var(--t3);font-size:1.3rem;cursor:none;transition:color var(--tr)}
+    .mclose:hover{color:var(--cyan)}
+    .mhead{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--gb)}
+    .micon{width:52px;height:52px;border-radius:var(--rs);background:linear-gradient(135deg,rgba(0,229,255,.15),rgba(124,58,237,.15));border:1px solid var(--b);display:flex;align-items:center;justify-content:center;font-size:1.6rem}
+    .mtit{font-family:var(--fd);font-size:1.3rem;font-weight:700}
+    .msub{font-size:.82rem;color:var(--cyan);margin-top:.2rem}
+    .mbody{font-size:.875rem;color:var(--t2);line-height:1.75}
+    .mbody h4{font-family:var(--fd);font-size:.95rem;font-weight:600;color:var(--t1);margin:1.25rem 0 .5rem}
+    .mbody ul{list-style:none;padding:0}
+    .mbody ul li{padding:.3rem 0;padding-left:1.15rem;position:relative}
+    .mbody ul li::before{content:'▸';position:absolute;left:0;color:var(--cyan);font-size:.7rem}
+    .mbody .cb{background:rgba(0,0,0,.4);border:1px solid var(--gb);border-radius:var(--rs);padding:1rem;font-family:var(--fm);font-size:.78rem;overflow-x:auto;line-height:1.75;margin:.75rem 0}
+
+    /* DIVIDER */
+    .div{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--b),transparent)}
+
+    /* REVEAL */
+    .rv{opacity:0;transform:translateY(28px);transition:opacity .68s ease,transform .68s ease}
+    .rv.vi{opacity:1;transform:translateY(0)}
+    .rv1{transition-delay:.1s}.rv2{transition-delay:.2s}.rv3{transition-delay:.3s}
+
+    /* GLOW DOT */
+    .gdot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#10b981;margin-right:.5rem;box-shadow:0 0 8px #10b981;animation:pulse 2s ease-in-out infinite}
+
+    /* RESPONSIVE */
+    @media(max-width:768px){
+      .nl,.btnav{display:none}
+      .ham{display:flex}
+      #about .ag,.apig,.cog{grid-template-columns:1fr}
+      .hst{gap:2rem}
+      .pg{grid-template-columns:1fr}
+      section{padding:3.8rem 0}
+      .avw{position:static}
+    }
+    @media(max-width:480px){.hn{font-size:2.4rem}.stn{font-size:2.1rem}}
+
+    /* NEON ACCENT GLOW on section labels */
+    .neon{text-shadow:0 0 18px rgba(0,229,255,.45)}
+    .highlight{background:linear-gradient(135deg,#00e5ff,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+  </style>
+</head>
+<body>
+
+<!-- LOADING -->
+<div id="ls">
+  <div class="ll">MS</div>
+  <div class="ls2">MaybeSainadh · Loading Portfolio</div>
+  <div class="lb"><div class="lf"></div></div>
+</div>
+
+<!-- CURSOR -->
+<div id="cur"></div><div id="curR"></div>
+
+<!-- SCROLL PROGRESS -->
+<div id="sp"></div>
+
+<!-- THREE.JS -->
+<canvas id="bgc"></canvas>
+
+<!-- FLOATING WHATSAPP -->
+<a id="wa-float" href="https://wa.me/919652858369" target="_blank" rel="noopener">
+  <i class="fab fa-whatsapp"></i>
+  <span class="wa-tooltip">💬 Chat on WhatsApp</span>
+</a>
+
+<!-- MOBILE MENU -->
+<div class="mm" id="mm">
+  <button class="mmc" onclick="document.getElementById('mm').classList.remove('open')">✕</button>
+  <a href="#about" onclick="document.getElementById('mm').classList.remove('open')">About</a>
+  <a href="#skills" onclick="document.getElementById('mm').classList.remove('open')">Skills</a>
+  <a href="#experience" onclick="document.getElementById('mm').classList.remove('open')">Experience</a>
+  <a href="#projects" onclick="document.getElementById('mm').classList.remove('open')">Projects</a>
+  <a href="#contact" onclick="document.getElementById('mm').classList.remove('open')">Contact</a>
+</div>
+
+<!-- NAV -->
+<nav id="nb">
+  <div class="nlogo">MS <span class="nbadge">MaybeSainadh</span></div>
+  <ul class="nl">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#api">REST API</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nact">
+    <button class="tgt" id="tgt">🌙</button>
+    <a href="#contact" class="btnav">Hire Me</a>
+    <button class="ham" onclick="document.getElementById('mm').classList.add('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<section id="hero">
+  <div class="cont">
+    <div class="hi">
+      <p class="hg"><span class="gdot"></span>Available for new opportunities · Hyderabad, India</p>
+      <h1 class="hn">Sainath Alampally</h1>
+      <div class="hr"><span id="tt"></span><span class="tc">|</span></div>
+      <p class="hd">Building enterprise-grade ERP, HRMS &amp; Payroll systems at <strong style="color:var(--cyan)">Integrated Information Solutions</strong>. Java · Spring Boot · Angular · 3+ years of production experience.</p>
+      <div class="ha">
+        <a href="mailto:saikrishna30prame@gmail.com" class="btn btnp"><i class="fas fa-download"></i> Download Resume</a>
+        <a href="https://wa.me/919652858369" target="_blank" class="btn btns"><i class="fab fa-whatsapp"></i> WhatsApp Me</a>
+        <a href="#projects" class="btn btng">View Projects →</a>
+      </div>
+      <div class="hs">
+        <a href="https://github.com/saikrishna1406" target="_blank" class="sl sl-gh" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com/in/sainathalampally" target="_blank" class="sl sl-li" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://instagram.com/maybesainadh" target="_blank" class="sl sl-ig" title="Instagram @maybesainadh"><i class="fab fa-instagram"></i></a>
+        <a href="https://x.com/maybesainadh" target="_blank" class="sl sl-x" title="X @maybesainadh"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://wa.me/919652858369" target="_blank" class="sl sl-wa" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="mailto:saikrishna30prame@gmail.com" class="sl sl-em" title="Email"><i class="fas fa-envelope"></i></a>
+        <a href="tel:+919652858369" class="sl sl-ph" title="Call"><i class="fas fa-phone"></i></a>
+      </div>
+      <div class="hst">
+        <div class="sti"><div class="stn"><span class="counter" data-target="3">0</span>+</div><div class="stl">Years Experience</div></div>
+        <div class="sti"><div class="stn"><span class="counter" data-target="20">0</span>+</div><div class="stl">Projects Delivered</div></div>
+        <div class="sti"><div class="stn"><span class="counter" data-target="40">0</span>+</div><div class="stl">Technologies</div></div>
+        <div class="sti"><div class="stn"><span class="counter" data-target="5">0</span>+</div><div class="stl">Enterprise Apps</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="scrollh"><span>scroll</span><div class="scl"></div></div>
+</section>
+
+<div class="div"></div>
+
+<!-- ===================== ABOUT ===================== -->
+<section id="about">
+  <div class="cont">
+    <div class="ag">
+      <div class="avw rv">
+        <div class="avf">🧑‍💻</div>
+        <div class="abbadges">
+          <span class="badge">📍 Hyderabad, India</span>
+          <span class="badge">☕ Java Expert</span>
+          <span class="badge">🔷 Angular Dev</span>
+          <span class="badge">🚀 Spring Boot</span>
+          <span class="badge">⚡ Full Stack</span>
+        </div>
+        <div style="display:flex;gap:.7rem;margin-top:1rem;flex-wrap:wrap">
+          <a href="mailto:saikrishna30prame@gmail.com" class="btn btnp" style="padding:.58rem 1.2rem;font-size:.8rem"><i class="fas fa-envelope"></i> Email Me</a>
+          <a href="https://wa.me/919652858369" target="_blank" class="btn btns" style="padding:.58rem 1.2rem;font-size:.8rem"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        </div>
+        <div style="margin-top:1.2rem;padding:1rem;border-radius:var(--rs);border:1px solid var(--b);background:var(--gc)">
+          <div style="font-family:var(--fm);font-size:.7rem;color:var(--t3);margin-bottom:.5rem">CONTACT</div>
+          <div style="font-size:.82rem;color:var(--t2);margin-bottom:.35rem"><i class="fas fa-phone" style="color:var(--cyan);margin-right:.5rem"></i>+91 96528 58369</div>
+          <div style="font-size:.82rem;color:var(--t2)"><i class="fas fa-envelope" style="color:var(--cyan);margin-right:.5rem"></i>saikrishna30prame@gmail.com</div>
+        </div>
+      </div>
+      <div>
+        <div class="rv">
+          <span class="slbl">About Me</span>
+          <h2 class="stit">Crafting <span>enterprise software</span> that scales</h2>
+          <p class="ssub">Full Stack Developer at <strong style="color:var(--cyan)">Integrated Information Solutions</strong>, Hyderabad — building complex business systems from ground up with Java, Spring Boot &amp; Angular.</p>
+          <p style="margin-top:1rem;color:var(--t2);line-height:1.8;font-size:.93rem">My work spans backend robustness (Spring Boot microservices, Kafka, REST APIs) to polished frontends (Angular, AG Grid, Chart.js). I've integrated Razorpay &amp; SBI payment gateways, biometric devices, OCR pipelines, and WebRTC-powered VoIP — delivering software that runs real businesses at scale.</p>
+        </div>
+        <div class="rv rv2" style="margin-top:2.2rem">
+          <span class="slbl">Career Journey</span>
+          <ul class="tl">
+            <li class="tli">
+              <div class="tld">Apr 10, 2023 – Present</div>
+              <div class="tlt">Full Stack Developer · Integrated Information Solutions</div>
+              <div class="tls">Leading development of ERP, HRMS &amp; Payroll modules. Spring Boot + Angular stack.</div>
+            </li>
+            <li class="tli">
+              <div class="tld">Sep 2022 – Apr 2023</div>
+              <div class="tlt">Full Stack Developer Certification · JSpiders</div>
+              <div class="tls">Advanced Java, Spring Boot, Angular, MySQL — intensive certified training</div>
+            </li>
+            <li class="tli">
+              <div class="tld">2021 – 2022</div>
+              <div class="tlt">Junior Developer · Freelance Projects</div>
+              <div class="tls">KenFed, Sentinel E-Challan, ServiceHub, KKVHYD — REST APIs &amp; payment integrations</div>
+            </li>
+            <li class="tli">
+              <div class="tld">2016 – 2020</div>
+              <div class="tlt">B.Tech in Computer Science</div>
+              <div class="tls">Graduated with strong foundation in DSA, OOP &amp; software engineering</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- ===================== SKILLS ===================== -->
+<section id="skills">
+  <div class="cont">
+    <div class="rv" style="text-align:center;max-width:580px;margin:0 auto 2.8rem">
+      <span class="slbl">Technical Arsenal</span>
+      <h2 class="stit">Skills & <span>Technologies</span></h2>
+      <p class="ssub" style="margin:0 auto">Click any technology tag to learn more about it.</p>
+    </div>
+    <div class="sg">
+      <div class="gc skgrp rv">
+        <div class="skgt"><i class="fas fa-layer-group"></i> Frontend</div>
+        <div class="ski"><div class="skr"><span class="skn">Angular</span><span class="skp">92%</span></div><div class="skbb"><div class="skbf" data-width="92"></div></div></div>
+        <div class="ski"><div class="skr"><span class="skn">TypeScript / JavaScript</span><span class="skp">88%</span></div><div class="skbb"><div class="skbf" data-width="88"></div></div></div>
+        <div class="ski"><div class="skr"><span class="skn">HTML5 / CSS3 / Tailwind</span><span class="skp">90%</span></div><div class="skbb"><div class="skbf" data-width="90"></div></div></div>
+        <div class="ski"><div class="skr"><span class="skn">AG Grid / Chart.js / W2UI</span><span class="skp">85%</span></div><div class="skbb"><div class="skbf" data-width="85"></div></div></div>
+        <div class="ski"><div class="skr"><span class="skn">Angular Material / Bootstrap</span><span class="skp">87%</span></div><div class="skbb"><div class="skbf" data-width="87"></div></div></div>
+        <div class="ski"><div class="skr"><span class="skn">React</span><span class="skp">72%</span></div><div class="skbb"><div class="skbf" data-width="72"></div></div></div>
+      </div>
+      <div class="gc skgrp rv rv1">
+        <div class="skgt"><i class="fas fa-server"></i> Backend</div>
+        <div class="ski"><div class="skr"><span class="skn">Java / Spring Boot</span><span class="skp">93%</span></div><div class="skbb"><div class="skbf" data-width="93"></div></div></div>
+        <div class="ski"><div class="skr"><span class="skn">Spring Security / JWT</span><span class="skp">88%</span></div><div class="skbb"><div class="skbf" data-width="88"></div></div></div>
+        <div class="ski"><div class="skr"><span class="skn">Microservices / REST APIs</span><span class="skp">87%</span></div><div class="skbb"><div class="skbf" data-width="87"></div></div></div>
+        <div class="ski"><div class="skr"><span class="skn">Apache Kafka</span><span class="skp">78%</span></div><div class="skbb"><div class="skbf" data-width="78"></div></div></div>
+        <div class="ski"><div class="skr"><span class="skn">Node.js / PHP / Laravel</span><span class="skp">70%</span></div><div class="skbb"><div class="skbf" data-width="70"></div></div></div>
+        <div class="ski"><div class="skr"><span class="skn">WebRTC / SIP / VoIP</span><span class="skp">75%</span></div><div class="skbb"><div class="skbf" data-width="75"></div></div></div>
+      </div>
+      <div class="gc skgrp rv rv2">
+        <div class="skgt"><i class="fas fa-database"></i> Data & DevOps</div>
+        <div class="ski"><div class="skr"><span class="skn">MySQL / MariaDB / Oracle</span><span class="skp">88%</span></div><div class="skbb"><div class="skbf" data-width="88"></div></div></div>
+        <div class="ski"><div class="skr"><span class="skn">Firebase</span><span class="skp">80%</span></div><div class="skbb"><div class="skbf" data-width="80"></div></div></div>
+        <div class="ski"><div class="skr"><span class="skn">Git / GitHub / Bitbucket</span><span class="skp">90%</span></div><div class="skbb"><div class="skbf" data-width="90"></div></div></div>
+        <div class="ski"><div class="skr"><span class="skn">CloudPanel / PuTTY / WinSCP</span><span class="skp">78%</span></div><div class="skbb"><div class="skbf" data-width="78"></div></div></div>
+        <div class="ski"><div class="skr"><span class="skn">Swagger / Postman</span><span class="skp">88%</span></div><div class="skbb"><div class="skbf" data-width="88"></div></div></div>
+        <div class="ski"><div class="skr"><span class="skn">Google Maps / Leaflet</span><span class="skp">82%</span></div><div class="skbb"><div class="skbf" data-width="82"></div></div></div>
+      </div>
+    </div>
+    <div class="rv" style="margin-top:2.2rem">
+      <div style="font-family:var(--fm);font-size:.72rem;color:var(--t3);margin-bottom:.75rem;text-transform:uppercase;letter-spacing:.1em">Click any tag to learn more</div>
+      <div class="tcl" id="tagcloud">
+        <span class="tt" data-tech="springboot">Spring Boot</span>
+        <span class="tt" data-tech="angular">Angular</span>
+        <span class="tt" data-tech="java">Java 8+</span>
+        <span class="tt" data-tech="microservices">Microservices</span>
+        <span class="tt" data-tech="kafka">Apache Kafka</span>
+        <span class="tt" data-tech="webrtc">WebRTC</span>
+        <span class="tt" data-tech="ocr">OCR</span>
+        <span class="tt" data-tech="firebase">Firebase</span>
+        <span class="tt" data-tech="razorpay">Razorpay</span>
+        <span class="tt" data-tech="sbipayment">SBI Payment</span>
+        <span class="tt" data-tech="gpstracking">GPS Tracking</span>
+        <span class="tt" data-tech="biometric">Biometric</span>
+        <span class="tt" data-tech="leaflet">Leaflet.js</span>
+        <span class="tt" data-tech="aggrid">AG Grid</span>
+        <span class="tt" data-tech="chartjs">Chart.js</span>
+        <span class="tt" data-tech="w2ui">W2UI</span>
+        <span class="tt" data-tech="jwt">JWT</span>
+        <span class="tt" data-tech="springsecurity">Spring Security</span>
+        <span class="tt" data-tech="oracle">Oracle DB</span>
+        <span class="tt" data-tech="mariadb">MariaDB</span>
+        <span class="tt" data-tech="swagger">Swagger</span>
+        <span class="tt" data-tech="restapi">REST APIs</span>
+        <span class="tt" data-tech="qrcode">QR Code</span>
+        <span class="tt" data-tech="facedetection">Face Detection</span>
+        <span class="tt" data-tech="indiamart">IndiaMart API</span>
+        <span class="tt" data-tech="laravel">Laravel</span>
+        <span class="tt" data-tech="codeigniter">CodeIgniter</span>
+        <span class="tt" data-tech="voip">VoIP / SIP</span>
+        <span class="tt" data-tech="kafka">Schedulers</span>
+        <span class="tt" data-tech="cloudpanel">CloudPanel</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- ===================== EXPERIENCE ===================== -->
+<section id="experience">
+  <div class="cont">
+    <div class="rv" style="margin-bottom:2.8rem">
+      <span class="slbl">Work History</span>
+      <h2 class="stit">Professional <span>Experience</span></h2>
+      <p class="ssub">Building enterprise systems that solve real business problems.</p>
+    </div>
+    <div class="etl">
+      <div class="gc ec rv">
+        <div class="eh">
+          <div>
+            <div class="eco">Integrated Information Solutions · Hyderabad</div>
+            <div class="ero">Full Stack Developer — Java & Angular</div>
+          </div>
+          <span class="ep">Apr 10, 2023 – Present</span>
+        </div>
+        <ul class="el">
+          <li>Architected and delivered Bizionix ERP — multi-module enterprise platform (CRM, HR, Finance, Inventory, Projects)</li>
+          <li>Built Apple HRMS serving 10,000+ employees — payroll, leave, attendance, biometric integration</li>
+          <li>Designed real-time GPS tracking dashboards with Google Maps &amp; Leaflet + Kafka event streams</li>
+          <li>Integrated Razorpay &amp; SBI payment gateways with webhook-driven reconciliation</li>
+          <li>Implemented WebRTC + SIP VoIP calling module with call routing, recording &amp; analytics</li>
+          <li>Built OCR document processing pipeline reducing manual data entry by 70%</li>
+          <li>Developed BotBox WhatsApp automation using IndiaMart API for lead management</li>
+          <li>Reduced API response time by 40% via query optimization, indexing &amp; Spring caching</li>
+        </ul>
+        <div class="etgs">
+          <span class="etg">Java</span><span class="etg">Spring Boot</span><span class="etg">Angular</span><span class="etg">MySQL</span><span class="etg">Kafka</span><span class="etg">WebRTC</span><span class="etg">Firebase</span><span class="etg">Razorpay</span><span class="etg">SBI</span><span class="etg">OCR</span><span class="etg">JWT</span><span class="etg">Leaflet</span>
+        </div>
+      </div>
+      <div class="gc ec rv rv1">
+        <div class="eh">
+          <div>
+            <div class="eco">Freelance / Contract Projects</div>
+            <div class="ero">Full Stack Developer</div>
+          </div>
+          <span class="ep">2021 – 2023</span>
+        </div>
+        <ul class="el">
+          <li>Developed KenFed credit society platform with loan tracking, EMI calculation, member portal</li>
+          <li>Built Sentinel E-Challan system for traffic enforcement with real-time violation reporting</li>
+          <li>Created ServiceHub field service management app with technician routing &amp; job scheduling</li>
+          <li>Delivered KKVHYD welfare portal with event management, member directory &amp; donations</li>
+          <li>Built HEY real-time messaging platform with WebSocket chat &amp; Firebase notifications</li>
+        </ul>
+        <div class="etgs">
+          <span class="etg">PHP</span><span class="etg">Laravel</span><span class="etg">CodeIgniter</span><span class="etg">MySQL</span><span class="etg">Angular</span><span class="etg">Firebase</span><span class="etg">REST APIs</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- ===================== PROJECTS ===================== -->
+<section id="projects">
+  <div class="cont">
+    <div class="rv" style="margin-bottom:2.8rem;text-align:center">
+      <span class="slbl">Portfolio</span>
+      <h2 class="stit">Featured <span>Projects</span></h2>
+      <p class="ssub" style="margin:0 auto">Enterprise systems, SaaS tools, and real-time applications.</p>
+    </div>
+    <div class="pg">
+      <div class="gc pc rv"><div class="pi">🏢</div><div class="pt">Bizionix ERP</div><div class="pd">Multi-module enterprise resource planning platform — CRM, HR, Finance, Inventory, Projects with role-based access and dashboards.</div><div class="pf"><span class="pfeat">CRM & Leads</span><span class="pfeat">Finance</span><span class="pfeat">Inventory</span><span class="pfeat">RBAC</span><span class="pfeat">Audit Logs</span><span class="pfeat">REST APIs</span></div><div class="etgs" style="margin-bottom:1rem"><span class="etg">Spring Boot</span><span class="etg">Angular</span><span class="etg">MySQL</span><span class="etg">JWT</span></div><div class="pft"><div class="plinks"><a href="#" class="btn btng"><i class="fab fa-github"></i> Code</a><a href="#" class="btn btng"><i class="fas fa-external-link-alt"></i> Live</a></div></div></div>
+      <div class="gc pc rv rv1"><div class="pi">👥</div><div class="pt">Apple HRMS</div><div class="pd">Complete HR management for 10,000+ employees — payroll, leave, attendance with biometric integration, appraisals, statutory compliance.</div><div class="pf"><span class="pfeat">Payroll Engine</span><span class="pfeat">Biometric Sync</span><span class="pfeat">Leave Calendar</span><span class="pfeat">Appraisals</span></div><div class="etgs" style="margin-bottom:1rem"><span class="etg">Java</span><span class="etg">Spring Boot</span><span class="etg">Angular</span><span class="etg">Oracle</span></div><div class="pft"><div class="plinks"><a href="#" class="btn btng"><i class="fab fa-github"></i> Code</a><a href="#" class="btn btng"><i class="fas fa-external-link-alt"></i> Live</a></div></div></div>
+      <div class="gc pc rv rv2"><div class="pi">🗺️</div><div class="pt">GPS Tracking System</div><div class="pd">Real-time fleet tracking with Kafka event streaming, geofencing, live Leaflet maps, route history and alerts.</div><div class="pf"><span class="pfeat">Live Map</span><span class="pfeat">Kafka Streaming</span><span class="pfeat">Geofencing</span><span class="pfeat">Route Replay</span></div><div class="etgs" style="margin-bottom:1rem"><span class="etg">Kafka</span><span class="etg">Leaflet.js</span><span class="etg">Spring Boot</span><span class="etg">WebSocket</span></div><div class="pft"><div class="plinks"><a href="#" class="btn btng"><i class="fab fa-github"></i> Code</a></div></div></div>
+      <div class="gc pc rv"><div class="pi">💬</div><div class="pt">BotBox — WhatsApp Automation</div><div class="pd">WhatsApp business automation integrating IndiaMart API for lead capture, automated follow-ups, templates &amp; analytics.</div><div class="pf"><span class="pfeat">IndiaMart API</span><span class="pfeat">Auto Follow-ups</span><span class="pfeat">Campaigns</span><span class="pfeat">Analytics</span></div><div class="etgs" style="margin-bottom:1rem"><span class="etg">Node.js</span><span class="etg">IndiaMart API</span><span class="etg">MySQL</span><span class="etg">Angular</span></div><div class="pft"><div class="plinks"><a href="#" class="btn btng"><i class="fab fa-github"></i> Code</a><a href="#" class="btn btng"><i class="fas fa-external-link-alt"></i> Live</a></div></div></div>
+      <div class="gc pc rv rv1"><div class="pi">📞</div><div class="pt">WebRTC VoIP Platform</div><div class="pd">Browser-based calling with WebRTC + SIP — call routing, recording, IVR, agent dashboards &amp; real-time quality monitoring.</div><div class="pf"><span class="pfeat">WebRTC Calling</span><span class="pfeat">SIP / VoIP</span><span class="pfeat">Call Recording</span><span class="pfeat">IVR System</span></div><div class="etgs" style="margin-bottom:1rem"><span class="etg">WebRTC</span><span class="etg">SIP</span><span class="etg">Java</span><span class="etg">Angular</span></div><div class="pft"><div class="plinks"><a href="#" class="btn btng"><i class="fab fa-github"></i> Code</a></div></div></div>
+      <div class="gc pc rv rv2"><div class="pi">💳</div><div class="pt">Payment Gateway</div><div class="pd">Unified payment module — Razorpay &amp; SBI integration, webhook events, auto-reconciliation, refund management, reports.</div><div class="pf"><span class="pfeat">Razorpay</span><span class="pfeat">SBI Payment</span><span class="pfeat">Webhooks</span><span class="pfeat">Reconciliation</span></div><div class="etgs" style="margin-bottom:1rem"><span class="etg">Razorpay SDK</span><span class="etg">SBI API</span><span class="etg">Spring Boot</span><span class="etg">MySQL</span></div><div class="pft"><div class="plinks"><a href="#" class="btn btng"><i class="fab fa-github"></i> Code</a></div></div></div>
+      <div class="gc pc rv"><div class="pi">🌳</div><div class="pt">Gentree</div><div class="pd">Interactive digital family tree builder with hierarchical visualization, member profiles, photo albums &amp; privacy-controlled sharing.</div><div class="pf"><span class="pfeat">Tree Visual</span><span class="pfeat">Member Profiles</span><span class="pfeat">Photo Albums</span><span class="pfeat">Privacy</span></div><div class="etgs" style="margin-bottom:1rem"><span class="etg">Angular</span><span class="etg">Spring Boot</span><span class="etg">Firebase</span></div><div class="pft"><div class="plinks"><a href="#" class="btn btng"><i class="fab fa-github"></i> Code</a><a href="#" class="btn btng"><i class="fas fa-external-link-alt"></i> Live</a></div></div></div>
+      <div class="gc pc rv rv1"><div class="pi">🏛️</div><div class="pt">KenFed Credit Society</div><div class="pd">Cooperative credit platform — member management, loan applications, EMI schedules, interest calculations &amp; compliance reports.</div><div class="pf"><span class="pfeat">Loan Management</span><span class="pfeat">EMI Calculator</span><span class="pfeat">Member Portal</span><span class="pfeat">Compliance</span></div><div class="etgs" style="margin-bottom:1rem"><span class="etg">PHP</span><span class="etg">Laravel</span><span class="etg">MySQL</span><span class="etg">Angular</span></div><div class="pft"><div class="plinks"><a href="#" class="btn btng"><i class="fab fa-github"></i> Code</a><a href="#" class="btn btng"><i class="fas fa-external-link-alt"></i> Live</a></div></div></div>
+      <div class="gc pc rv rv2"><div class="pi">🔍</div><div class="pt">OCR Document Processing</div><div class="pd">Automated digitization pipeline using OCR to extract structured data from ID cards, invoices &amp; forms — 70% less manual entry.</div><div class="pf"><span class="pfeat">ID Card OCR</span><span class="pfeat">Invoice Extract</span><span class="pfeat">Form Recognition</span><span class="pfeat">Validation</span></div><div class="etgs" style="margin-bottom:1rem"><span class="etg">Java</span><span class="etg">OCR Engine</span><span class="etg">Spring Boot</span><span class="etg">Angular</span></div><div class="pft"><div class="plinks"><a href="#" class="btn btng"><i class="fab fa-github"></i> Code</a></div></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- ===================== REST API ===================== -->
+<section id="api">
+  <div class="cont">
+    <div class="rv" style="margin-bottom:2.8rem">
+      <span class="slbl">Technical Knowledge</span>
+      <h2 class="stit">REST API <span>Architecture</span></h2>
+      <p class="ssub">How I design production-grade APIs from request to database and back.</p>
+    </div>
+    <div class="apig">
+      <div class="rv">
+        <div style="margin-bottom:1.4rem">
+          <div class="slbl" style="margin-bottom:.7rem">HTTP Methods</div>
+          <div class="hm"><span class="am get">GET</span><span class="am post">POST</span><span class="am put">PUT</span><span class="am del">DELETE</span><span class="am patch">PATCH</span></div>
+        </div>
+        <div style="margin-bottom:1.4rem">
+          <div class="slbl" style="margin-bottom:.7rem">Status Codes</div>
+          <div class="sg2">
+            <div class="si"><div class="sc s2">200 OK</div><div class="sd">Successful</div></div>
+            <div class="si"><div class="sc s2">201 Created</div><div class="sd">Resource created</div></div>
+            <div class="si"><div class="sc s4">401 Unauth</div><div class="sd">Invalid token</div></div>
+            <div class="si"><div class="sc s4">404 Not Found</div><div class="sd">Missing resource</div></div>
+            <div class="si"><div class="sc s5">500 Error</div><div class="sd">Server failure</div></div>
+            <div class="si"><div class="sc s4">403 Forbidden</div><div class="sd">Insufficient role</div></div>
+          </div>
+        </div>
+        <div class="adl">
+<span class="cm">// JWT Bearer Auth</span>
+<span class="kw">Authorization:</span> <span class="str">Bearer eyJhbGciOiJIUzI1NiJ9...</span>
+
+<span class="cm">// POST Request</span>
+<span class="fn">POST</span> /api/v1/employees
+<span class="kw">Content-Type:</span> application/json
+
+{
+  <span class="str">"name"</span>: <span class="str">"Sainath"</span>,
+  <span class="str">"department"</span>: <span class="str">"Engineering"</span>
+}</div>
+      </div>
+      <div class="rv rv2">
+        <div class="slbl" style="margin-bottom:1rem">Spring Boot Request Flow</div>
+        <div class="ad">
+          <div class="alay"><div class="albl">Client (Angular / Postman)</div><div class="adsc">HTTP Request + JWT Bearer Token</div></div>
+          <div class="alay"><div class="albl">Spring Security Filter Chain</div><div class="adsc">Token validation → set SecurityContext</div></div>
+          <div class="alay"><div class="albl">REST Controller @RestController</div><div class="adsc">Maps endpoints, validates input DTOs</div></div>
+          <div class="alay"><div class="albl">Service Layer @Service</div><div class="adsc">Business logic, validation, transactions</div></div>
+          <div class="alay"><div class="albl">Repository Layer (JPA)</div><div class="adsc">CRUD, custom @Query, Spring Data</div></div>
+          <div class="alay"><div class="albl">Database (MySQL / Oracle)</div><div class="adsc">Persistent storage with HikariCP pooling</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- ===================== SPRING BOOT ===================== -->
+<section id="springboot">
+  <div class="cont">
+    <div class="rv" style="margin-bottom:2.8rem">
+      <span class="slbl">Deep Dive</span>
+      <h2 class="stit">Spring Boot <span>Architecture</span></h2>
+    </div>
+    <div class="sbf">
+      <div class="gc sbfc rv"><div class="sbfi">🔄</div><div class="sbft">IoC & Dependency Injection</div><div class="sbfd">Spring IoC container manages bean lifecycle. @Autowired, @Component, @Service, @Repository wire dependencies automatically.</div></div>
+      <div class="gc sbfc rv rv1"><div class="sbfi">🔐</div><div class="sbft">Spring Security + JWT</div><div class="sbfd">Stateless JWT auth with custom filters, role-based authorization via @PreAuthorize and method-level security.</div></div>
+      <div class="gc sbfc rv rv2"><div class="sbfi">🌐</div><div class="sbft">MVC & REST Controllers</div><div class="sbfd">@RestController + DTO validation, global exception handling via @ControllerAdvice, Swagger docs integration.</div></div>
+      <div class="gc sbfc rv"><div class="sbfi">⚙️</div><div class="sbft">Microservices</div><div class="sbfd">Service decomposition, API Gateway pattern, Kafka for async communication, circuit breakers for resilience.</div></div>
+      <div class="gc sbfc rv rv1"><div class="sbfi">📋</div><div class="sbft">Apache Kafka</div><div class="sbfd">Producer-consumer for GPS updates, audit event sourcing, notification delivery, decoupled service communication.</div></div>
+      <div class="gc sbfc rv rv2"><div class="sbfi">🗄️</div><div class="sbft">JPA & Data Layer</div><div class="sbfd">Spring Data JPA + Hibernate ORM, custom repositories, JPQL queries, optimistic locking, HikariCP pooling.</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- ===================== ANGULAR ===================== -->
+<section id="angular">
+  <div class="cont">
+    <div class="rv" style="margin-bottom:2.8rem">
+      <span class="slbl">Frontend Mastery</span>
+      <h2 class="stit">Angular <span>Expertise</span></h2>
+    </div>
+    <div class="atg rv">
+      <div class="at" data-tech="angular"><div class="ati">🏗️</div><div class="atn">Architecture</div></div>
+      <div class="at" data-tech="angular"><div class="ati">🧩</div><div class="atn">Standalone Components</div></div>
+      <div class="at" data-tech="rxjs"><div class="ati">🔄</div><div class="atn">RxJS & Observables</div></div>
+      <div class="at" data-tech="angular"><div class="ati">⚡</div><div class="atn">Signals (v17+)</div></div>
+      <div class="at" data-tech="jwt"><div class="ati">🛡️</div><div class="atn">Route Guards</div></div>
+      <div class="at" data-tech="angular"><div class="ati">📦</div><div class="atn">Lazy Loading</div></div>
+      <div class="at" data-tech="angular"><div class="ati">📝</div><div class="atn">Reactive Forms</div></div>
+      <div class="at" data-tech="angular"><div class="ati">💉</div><div class="atn">Dependency Injection</div></div>
+      <div class="at" data-tech="restapi"><div class="ati">🔗</div><div class="atn">HTTP Client</div></div>
+      <div class="at" data-tech="angular"><div class="ati">🎨</div><div class="atn">Angular Material</div></div>
+      <div class="at" data-tech="aggrid"><div class="ati">📊</div><div class="atn">AG Grid</div></div>
+      <div class="at" data-tech="angular"><div class="ati">🔁</div><div class="atn">Lifecycle Hooks</div></div>
+      <div class="at" data-tech="jwt"><div class="ati">🔐</div><div class="atn">JWT Auth Flow</div></div>
+      <div class="at" data-tech="angular"><div class="ati">⚡</div><div class="atn">Performance</div></div>
+      <div class="at" data-tech="angular"><div class="ati">🗂️</div><div class="atn">State Management</div></div>
+      <div class="at" data-tech="angular"><div class="ati">🧪</div><div class="atn">Unit Testing</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- ===================== CERTIFICATES ===================== -->
+<section id="certificates">
+  <div class="cont">
+    <div class="rv" style="margin-bottom:2.8rem;text-align:center">
+      <span class="slbl">Credentials</span>
+      <h2 class="stit">Certificates & <span>Training</span></h2>
+      <p class="ssub" style="margin:0 auto">Click any certificate to view full details.</p>
+    </div>
+    <div class="certg">
+      <div class="gc certc rv" data-cert="jspiders">
+        <span class="certb">Certified ✓</span>
+        <div class="certi">🎓</div>
+        <div class="certt">Full Stack Developer Certification</div>
+        <div class="certis">JSpiders — Hyderabad</div>
+        <div class="certd">Sep 2022 – Apr 2023 · Advanced Java, Spring Boot, Angular, MySQL, REST APIs, Hibernate. Real-world project-based certification.</div>
+      </div>
+      <div class="gc certc rv rv1" data-cert="mysql">
+        <span class="certb">Certified ✓</span>
+        <div class="certi">🗄️</div>
+        <div class="certt">Advanced MySQL & Database Design</div>
+        <div class="certis">Professional Certification</div>
+        <div class="certd">Normalization, complex joins, indexes, stored procedures, triggers, query optimization, ER diagram design.</div>
+      </div>
+      <div class="gc certc rv rv2" data-cert="webdev">
+        <span class="certb">Certified ✓</span>
+        <div class="certi">🌐</div>
+        <div class="certt">Full Stack Web Development</div>
+        <div class="certis">Web Development Bootcamp</div>
+        <div class="certd">HTML5, CSS3, JavaScript ES6+, Angular, REST APIs, deployment. End-to-end modern web development training.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- ===================== ACHIEVEMENTS ===================== -->
+<section id="achievements" style="background:linear-gradient(135deg,rgba(0,229,255,.025),rgba(124,58,237,.025))">
+  <div class="cont">
+    <div class="rv" style="text-align:center;margin-bottom:2.8rem">
+      <span class="slbl">Impact</span>
+      <h2 class="stit">Key <span>Achievements</span></h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.4rem">
+      <div class="gc rv" style="padding:1.85rem;text-align:center"><div style="font-size:2.3rem;margin-bottom:.65rem">⚡</div><div class="highlight" style="font-family:var(--fd);font-size:2rem;font-weight:700">40%</div><div style="color:var(--t2);font-size:.85rem;margin-top:.45rem">API Performance boost via query optimization &amp; Spring caching</div></div>
+      <div class="gc rv rv1" style="padding:1.85rem;text-align:center"><div style="font-size:2.3rem;margin-bottom:.65rem">📄</div><div class="highlight" style="font-family:var(--fd);font-size:2rem;font-weight:700">70%</div><div style="color:var(--t2);font-size:.85rem;margin-top:.45rem">Manual data entry reduction through OCR automation pipeline</div></div>
+      <div class="gc rv rv2" style="padding:1.85rem;text-align:center"><div style="font-size:2.3rem;margin-bottom:.65rem">👥</div><div class="highlight" style="font-family:var(--fd);font-size:2rem;font-weight:700">10K+</div><div style="color:var(--t2);font-size:.85rem;margin-top:.45rem">Employees managed through Apple HRMS payroll system</div></div>
+      <div class="gc rv rv1" style="padding:1.85rem;text-align:center"><div style="font-size:2.3rem;margin-bottom:.65rem">🚀</div><div class="highlight" style="font-family:var(--fd);font-size:2rem;font-weight:700">20+</div><div style="color:var(--t2);font-size:.85rem;margin-top:.45rem">Production projects — ERP, HRMS, Finance, GPS &amp; Comms</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- ===================== CONTACT ===================== -->
+<section id="contact">
+  <div class="cont">
+    <div class="cog">
+      <div class="rv">
+        <span class="slbl">Get in Touch</span>
+        <h2 class="stit">Let's build something <span>great together</span></h2>
+        <p class="ssub">Open to full-time roles at product companies, service firms &amp; startups. Let's connect.</p>
+        <div class="cls">
+          <a href="mailto:saikrishna30prame@gmail.com" class="cli"><div class="clico"><i class="fas fa-envelope"></i></div><div class="clt"><div class="cll">Email</div>saikrishna30prame@gmail.com</div></a>
+          <a href="tel:+919652858369" class="cli"><div class="clico"><i class="fas fa-phone"></i></div><div class="clt"><div class="cll">Phone / WhatsApp</div>+91 96528 58369</div></a>
+          <a href="https://wa.me/919652858369" target="_blank" class="cli" style="border-color:rgba(37,211,102,.25)"><div class="clico" style="background:rgba(37,211,102,.12);color:#25d366"><i class="fab fa-whatsapp"></i></div><div class="clt"><div class="cll">WhatsApp</div>wa.me/919652858369 → Opens directly</div></a>
+          <a href="https://linkedin.com/in/sainathalampally" target="_blank" class="cli"><div class="clico"><i class="fab fa-linkedin-in"></i></div><div class="clt"><div class="cll">LinkedIn</div>linkedin.com/in/sainathalampally</div></a>
+          <a href="https://github.com/saikrishna1406" target="_blank" class="cli"><div class="clico"><i class="fab fa-github"></i></div><div class="clt"><div class="cll">GitHub</div>github.com/saikrishna1406</div></a>
+          <a href="https://instagram.com/maybesainadh" target="_blank" class="cli" style="border-color:rgba(225,48,108,.2)"><div class="clico" style="background:rgba(225,48,108,.1);color:#e1306c"><i class="fab fa-instagram"></i></div><div class="clt"><div class="cll">Instagram</div>@maybesainadh</div></a>
+          <a href="https://x.com/maybesainadh" target="_blank" class="cli"><div class="clico"><i class="fab fa-x-twitter"></i></div><div class="clt"><div class="cll">X (Twitter)</div>@maybesainadh</div></a>
+          <div class="cli" style="cursor:default"><div class="clico"><i class="fas fa-map-marker-alt"></i></div><div class="clt"><div class="cll">Location</div>Hyderabad, Telangana, India</div></div>
+        </div>
+      </div>
+      <div class="gc rv rv2" style="padding:1.85rem">
+        <div style="margin-bottom:1.4rem"><div style="font-family:var(--fd);font-size:1.15rem;font-weight:700;margin-bottom:.3rem">Send a message</div><div style="font-size:.82rem;color:var(--t3)">I'll reply within 24 hours.</div></div>
+        <div class="fg"><label>NAME</label><input type="text" class="fi" placeholder="Your full name"/></div>
+        <div class="fg"><label>EMAIL</label><input type="email" class="fi" placeholder="your@email.com"/></div>
+        <div class="fg"><label>SUBJECT</label><input type="text" class="fi" placeholder="Job opportunity / Project / Collaboration"/></div>
+        <div class="fg"><label>MESSAGE</label><textarea class="fi" placeholder="Tell me about the role or project..."></textarea></div>
+        <button class="btn btnp" style="width:100%;justify-content:center" onclick="handleForm(this)"><i class="fas fa-paper-plane"></i> Send Message</button>
+        <div id="fsuc" style="display:none;margin-top:.9rem;text-align:center;color:#10b981;font-size:.85rem">✓ Message sent! I'll be in touch soon.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="cont">
+    <div class="fl">MaybeSainadh</div>
+    <div style="display:flex;gap:1rem;justify-content:center;margin-bottom:1.2rem;flex-wrap:wrap">
+      <a href="https://github.com/saikrishna1406" target="_blank" class="sl sl-gh" style="width:38px;height:38px"><i class="fab fa-github"></i></a>
+      <a href="https://linkedin.com/in/sainathalampally" target="_blank" class="sl sl-li" style="width:38px;height:38px"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://instagram.com/maybesainadh" target="_blank" class="sl sl-ig" style="width:38px;height:38px"><i class="fab fa-instagram"></i></a>
+      <a href="https://x.com/maybesainadh" target="_blank" class="sl sl-x" style="width:38px;height:38px"><i class="fab fa-x-twitter"></i></a>
+      <a href="https://wa.me/919652858369" target="_blank" class="sl sl-wa" style="width:38px;height:38px"><i class="fab fa-whatsapp"></i></a>
+      <a href="mailto:saikrishna30prame@gmail.com" class="sl sl-em" style="width:38px;height:38px"><i class="fas fa-envelope"></i></a>
+    </div>
+    <div class="fls">
+      <a href="#about">About</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
+    </div>
+    <p class="fc">Made with ❤️ by Sainath Alampally · Hyderabad, India · 2025</p>
+  </div>
+</footer>
+
+<!-- ===================== MODALS ===================== -->
+<div class="modal" id="modal">
+  <div class="mc">
+    <button class="mclose" onclick="closeModal()">✕</button>
+    <div class="mhead">
+      <div class="micon" id="micon">🔧</div>
+      <div><div class="mtit" id="mtit">Technology</div><div class="msub" id="msub">Details</div></div>
+    </div>
+    <div class="mbody" id="mbody"></div>
+  </div>
+</div>
+
+<!-- Three.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<script>
+// ===== TECH MODAL DATA =====
+const TECH = {
+  springboot:{icon:'🚀',title:'Spring Boot',sub:'Backend Framework · Java',body:`<p>Spring Boot is an opinionated Java framework that simplifies building production-ready applications. I use it as the backbone for all enterprise projects at <strong>Integrated Information Solutions</strong>.</p><h4>What I use it for</h4><ul><li>Building REST APIs with @RestController, @RequestMapping</li><li>JWT-based stateless authentication with Spring Security</li><li>Database interactions via Spring Data JPA + Hibernate</li><li>Kafka producers/consumers for event-driven GPS tracking</li><li>Scheduled jobs for payroll processing &amp; reconciliation</li><li>Microservices with shared API Gateway</li></ul><h4>Sample Controller</h4><div class="cb"><span style="color:#c792ea">@RestController</span>\n<span style="color:#c792ea">@RequestMapping</span>(<span style="color:#c3e88d">"/api/v1/employees"</span>)\n<span style="color:#82aaff">public class</span> EmployeeController {\n  <span style="color:#c792ea">@GetMapping</span>(<span style="color:#c3e88d">"/{id}"</span>)\n  <span style="color:#82aaff">public</span> ResponseEntity&lt;Employee&gt; get(<span style="color:#c792ea">@PathVariable</span> Long id) {\n    <span style="color:#82aaff">return</span> ResponseEntity.ok(service.findById(id));\n  }\n}</div>`},
+  angular:{icon:'🔷',title:'Angular',sub:'Frontend Framework · TypeScript',body:`<p>Angular is my primary frontend framework. I've used it to build complex ERP dashboards, HRMS portals, and real-time GPS tracking UIs at Integrated Information Solutions.</p><h4>Core concepts I use daily</h4><ul><li>Standalone components (Angular 17+) and module architecture</li><li>RxJS Observables for async data streams and HTTP calls</li><li>Reactive Forms with custom validators for complex ERP forms</li><li>Angular Material + AG Grid for data-heavy enterprise tables</li><li>Route guards for JWT auth, lazy loading for performance</li><li>HTTP Interceptors for auto-attaching Bearer tokens</li><li>Signals for fine-grained reactivity (Angular 16+)</li></ul><h4>HTTP Interceptor pattern</h4><div class="cb"><span style="color:#c792ea">@Injectable</span>()\n<span style="color:#82aaff">export class</span> AuthInterceptor <span style="color:#82aaff">implements</span> HttpInterceptor {\n  intercept(req, next) {\n    <span style="color:#82aaff">const</span> token = localStorage.getItem(<span style="color:#c3e88d">'token'</span>);\n    <span style="color:#82aaff">const</span> cloned = req.clone({\n      headers: req.headers.set(<span style="color:#c3e88d">'Authorization'</span>, <span style="color:#c3e88d">\`Bearer \${token}\`</span>)\n    });\n    <span style="color:#82aaff">return</span> next.handle(cloned);\n  }\n}</div>`},
+  java:{icon:'☕',title:'Java 8+',sub:'Core Language · JVM',body:`<p>Java is my primary backend language. I use Java 8+ features extensively across all production projects.</p><h4>Java 8+ features I use</h4><ul><li><strong>Streams API</strong> — filtering, mapping, collecting data efficiently</li><li><strong>Lambda expressions</strong> — concise functional style code</li><li><strong>Optional</strong> — safe null handling</li><li><strong>LocalDate/LocalDateTime</strong> — payroll date calculations</li><li><strong>CompletableFuture</strong> — async operations</li></ul><h4>Stream example</h4><div class="cb"><span style="color:#546e7a">// Filter active employees and get their salaries</span>\nList&lt;Double&gt; salaries = employees.stream()\n  .filter(e -&gt; e.isActive())\n  .map(Employee::getSalary)\n  .sorted(Comparator.reverseOrder())\n  .collect(Collectors.toList());</div>`},
+  kafka:{icon:'📡',title:'Apache Kafka',sub:'Event Streaming · Message Queue',body:`<p>I use Kafka for real-time GPS tracking, audit event sourcing, and decoupled microservice communication.</p><h4>Use cases in my projects</h4><ul><li>GPS location events (high-frequency, real-time updates to map UI)</li><li>Audit trail — every important action published as an event</li><li>Notification delivery — async, doesn't block the request thread</li><li>Payment webhook events — reliable processing with retries</li></ul><h4>Producer example</h4><div class="cb"><span style="color:#c792ea">@Service</span>\n<span style="color:#82aaff">public class</span> GpsEventProducer {\n  <span style="color:#c792ea">@Autowired</span>\n  <span style="color:#82aaff">private</span> KafkaTemplate&lt;String,GpsEvent&gt; template;\n\n  <span style="color:#82aaff">public void</span> publish(GpsEvent event) {\n    template.send(<span style="color:#c3e88d">"gps-topic"</span>, event);\n  }\n}</div>`},
+  webrtc:{icon:'📞',title:'WebRTC',sub:'Real-Time Communication · SIP / VoIP',body:`<p>I built a full browser-based VoIP calling system using WebRTC and SIP at Integrated Information Solutions.</p><h4>Features built</h4><ul><li>Browser-to-browser audio/video calling without plugins</li><li>SIP protocol integration for PSTN connectivity</li><li>ICE/STUN/TURN server configuration for NAT traversal</li><li>Call recording and storage pipeline</li><li>IVR system with auto-routing rules</li><li>Agent dashboard with live call queue and analytics</li></ul>`},
+  ocr:{icon:'🔍',title:'OCR Processing',sub:'Document Digitization',body:`<p>Built an automated OCR pipeline that reduced manual data entry by <strong>70%</strong> at Integrated Information Solutions.</p><h4>Pipeline steps</h4><ul><li>Document upload (ID cards, invoices, forms)</li><li>Pre-processing (deskew, denoise, threshold)</li><li>OCR engine extraction — structured data output</li><li>Validation rules — format checks, cross-referencing</li><li>Auto-population into ERP/HRMS database fields</li></ul>`},
+  razorpay:{icon:'💳',title:'Razorpay Integration',sub:'Payment Gateway · India',body:`<p>Full Razorpay payment integration built for ERP and HRMS billing modules.</p><h4>What's integrated</h4><ul><li>Payment Order creation via Razorpay REST API</li><li>Frontend checkout (Razorpay.js) with Angular</li><li>Webhook event handling (payment.captured, payment.failed)</li><li>Signature verification for security</li><li>Automated reconciliation with database</li><li>Refund initiation and tracking</li></ul>`},
+  sbipayment:{icon:'🏦',title:'SBI Payment Gateway',sub:'Government Payment Integration',body:`<p>Integrated SBI's payment gateway for government-facing portals and cooperative systems.</p><h4>Integration details</h4><ul><li>SBI ePay / Collect API integration</li><li>Encrypted request/response handling</li><li>Transaction status polling and webhook processing</li><li>Receipt generation and reconciliation reports</li></ul>`},
+  gpstracking:{icon:'🗺️',title:'GPS Tracking',sub:'Real-Time Fleet & Employee Tracking',body:`<p>Built a real-time GPS tracking system with Kafka event streaming and Leaflet.js map visualization.</p><h4>Architecture</h4><ul><li>Device/app sends GPS coordinates → Kafka producer</li><li>Spring Boot consumer processes and stores events</li><li>WebSocket pushes live position to Angular frontend</li><li>Leaflet.js renders markers, polyline routes on map</li><li>Geofencing — alert when vehicle leaves defined area</li><li>Route replay — historical path visualization</li></ul>`},
+  jwt:{icon:'🔐',title:'JWT Authentication',sub:'JSON Web Tokens · Spring Security',body:`<p>Stateless JWT-based auth is my standard pattern for all REST API projects.</p><h4>Flow</h4><ul><li>User logs in → server signs JWT with secret key</li><li>Client stores token in localStorage/sessionStorage</li><li>Every request sends <code>Authorization: Bearer &lt;token&gt;</code></li><li>Spring Security filter validates signature + expiry</li><li>Claims extracted → user loaded into SecurityContext</li><li>Role-based authorization via @PreAuthorize("hasRole('ADMIN')")</li></ul><h4>Token structure</h4><div class="cb">Header.Payload.Signature\n\n<span style="color:#c3e88d">// Payload claims</span>\n{\n  "sub": "sainath@iis.com",\n  "roles": ["ADMIN", "HR"],\n  "exp": 1782000000\n}</div>`},
+  firebase:{icon:'🔥',title:'Firebase',sub:'Google Backend as a Service',body:`<p>I use Firebase for real-time features, push notifications, and authentication in projects like Gentree and HEY.</p><h4>Services used</h4><ul><li>Firestore — real-time NoSQL database for live chat (HEY)</li><li>Firebase Auth — social login (Google, email)</li><li>Cloud Messaging (FCM) — push notifications</li><li>Firebase Storage — photo/document uploads in Gentree</li><li>Realtime Database — live presence indicators</li></ul>`},
+  aggrid:{icon:'📊',title:'AG Grid',sub:'Enterprise Data Grid · Angular',body:`<p>AG Grid is my go-to for large enterprise data tables across all ERP and HRMS modules.</p><h4>Features I use</h4><ul><li>Virtual scrolling — handles 100,000+ rows smoothly</li><li>Server-side row model — paginated API data</li><li>Column sorting, filtering, grouping, pinning</li><li>Excel export for payroll and financial reports</li><li>Custom cell renderers — action buttons, status badges</li><li>Inline editing with custom validation</li></ul>`},
+  swagger:{icon:'📖',title:'Swagger / OpenAPI',sub:'API Documentation',body:`<p>I document every API using Springdoc OpenAPI (Swagger UI) — ensures frontend team can integrate without back-and-forth.</p><h4>Setup</h4><div class="cb"><span style="color:#546e7a">// pom.xml</span>\n&lt;dependency&gt;\n  &lt;groupId&gt;org.springdoc&lt;/groupId&gt;\n  &lt;artifactId&gt;springdoc-openapi-starter-webmvc-ui&lt;/artifactId&gt;\n  &lt;version&gt;2.2.0&lt;/version&gt;\n&lt;/dependency&gt;\n\n<span style="color:#546e7a">// Access at: /swagger-ui.html</span></div>`},
+  restapi:{icon:'🔗',title:'REST API Design',sub:'HTTP · JSON · Stateless',body:`<p>I design RESTful APIs following industry best practices for all backend systems.</p><h4>Principles I follow</h4><ul><li>Resource-based URLs (<code>/api/v1/employees/{id}</code>)</li><li>Correct HTTP method usage (GET/POST/PUT/DELETE/PATCH)</li><li>Meaningful status codes (200/201/400/401/403/404/500)</li><li>DTOs for request/response (never expose entities directly)</li><li>Pagination for list endpoints (?page=0&size=20)</li><li>Global exception handler for consistent error responses</li><li>API versioning in URL path (/api/v1/)</li></ul>`},
+  rxjs:{icon:'🔄',title:'RxJS',sub:'Reactive Extensions · Angular',body:`<p>RxJS is central to Angular development. I use it for HTTP data streams, form value changes, and real-time WebSocket data.</p><h4>Common operators I use</h4><ul><li><strong>switchMap</strong> — cancel previous HTTP call on new input (search)</li><li><strong>combineLatest</strong> — merge multiple streams</li><li><strong>debounceTime</strong> — limit search API calls on keypress</li><li><strong>takeUntil</strong> — prevent memory leaks on component destroy</li><li><strong>catchError</strong> — handle HTTP errors gracefully</li></ul>`},
+  mariadb:{icon:'🗄️',title:'MariaDB',sub:'Relational Database · MySQL compatible',body:`<p>MariaDB is my primary database for most production projects at Integrated Information Solutions.</p><h4>What I do with it</h4><ul><li>Schema design — normalized tables, foreign keys, indexes</li><li>Complex JOINs across ERP modules (HR + Finance + Inventory)</li><li>Stored procedures for payroll batch processing</li><li>Full-text search for employee directory</li><li>Partitioning for large audit log tables</li></ul>`},
+  oracle:{icon:'🏛️',title:'Oracle Database',sub:'Enterprise RDBMS',body:`<p>Used Oracle DB for Apple HRMS — a large-scale enterprise system requiring Oracle's advanced features.</p><h4>Oracle-specific features used</h4><ul><li>PL/SQL procedures for complex payroll calculations</li><li>Sequences for ID generation</li><li>Oracle Date functions for statutory compliance reports</li><li>Partitioned tables for historical payroll data</li></ul>`},
+  laravel:{icon:'🌿',title:'Laravel',sub:'PHP Framework',body:`<p>Used Laravel for freelance projects — KenFed credit society and KKVHYD welfare portal.</p><h4>Features used</h4><ul><li>Eloquent ORM for database interactions</li><li>Laravel Sanctum for API authentication</li><li>Artisan commands for scheduled batch jobs</li><li>Form validation and resource controllers</li></ul>`},
+  codeigniter:{icon:'🔥',title:'CodeIgniter',sub:'PHP MVC Framework',body:`<p>Used CodeIgniter for earlier freelance projects — lightweight, fast setup for small to mid-size portals.</p><h4>Use cases</h4><ul><li>Sentinel E-Challan traffic violation portal</li><li>ServiceHub field service management</li><li>HEY messaging app (early version)</li></ul>`},
+  biometric:{icon:'👁️',title:'Biometric Integration',sub:'Attendance & Access Control',body:`<p>Integrated biometric devices with Apple HRMS for automated attendance tracking across all offices.</p><h4>Integration approach</h4><ul><li>ZKTeco / similar device SDK integration</li><li>Pull punch logs via TCP/IP or REST from device</li><li>Process raw logs → attendance records in HRMS</li><li>Handle edge cases: night shifts, overtime, missed punches</li><li>Generate compliance reports from attendance data</li></ul>`},
+  leaflet:{icon:'🗺️',title:'Leaflet.js',sub:'Open-Source Maps Library',body:`<p>Used Leaflet.js for GPS tracking dashboards — it's lighter than Google Maps and perfect for custom fleet tracking UIs.</p><h4>Features used</h4><ul><li>Custom marker icons for vehicles/employees</li><li>Polyline for route visualization</li><li>Polygon geofences with click handlers</li><li>Marker clustering for dense tracking data</li><li>OpenStreetMap tiles (free, no API billing)</li></ul>`},
+  chartjs:{icon:'📈',title:'Chart.js',sub:'Data Visualization',body:`<p>Used Chart.js for analytics dashboards in ERP, HRMS, and GPS tracking modules.</p><h4>Chart types I build</h4><ul><li>Line charts — attendance trends, sales growth</li><li>Bar charts — department-wise payroll comparison</li><li>Pie/Doughnut — leave type distribution</li><li>Mixed charts — revenue vs expenses overlay</li></ul>`},
+  w2ui:{icon:'🖼️',title:'W2UI',sub:'UI Grid & Forms Library',body:`<p>Used W2UI for some ERP modules — particularly its powerful grid, forms, and toolbar components.</p><h4>Components used</h4><ul><li>w2grid — sortable, filterable data tables</li><li>w2form — complex form layouts with validation</li><li>w2toolbar — ERP action toolbars</li><li>w2sidebar — collapsible navigation panels</li></ul>`},
+  springsecurity:{icon:'🛡️',title:'Spring Security',sub:'Authentication & Authorization',body:`<p>Spring Security is the security layer for all my Spring Boot APIs — JWT-based, role-based access control.</p><h4>Implementation</h4><ul><li>Custom JwtAuthenticationFilter extends OncePerRequestFilter</li><li>UserDetailsService loads user from DB by username</li><li>BCryptPasswordEncoder for password hashing</li><li>@PreAuthorize("hasRole('ADMIN')") on controller methods</li><li>CORS configuration for Angular frontend</li><li>CSRF disabled (stateless JWT APIs don't need it)</li></ul>`},
+  voip:{icon:'📡',title:'VoIP / SIP',sub:'Voice over IP Protocol',body:`<p>Built a complete VoIP platform using SIP protocol integrated with WebRTC for browser-based calling.</p><h4>Technical stack</h4><ul><li>Asterisk / FreePBX PBX server</li><li>SIP.js library in Angular frontend</li><li>STUN/TURN servers for NAT traversal</li><li>WebRTC MediaStream API for audio capture</li><li>Call Detail Records (CDR) stored in MySQL</li></ul>`},
+  qrcode:{icon:'▦',title:'QR Code & Barcode',sub:'Code Generation & Scanning',body:`<p>Implemented QR and barcode features across HRMS and inventory modules.</p><h4>Use cases</h4><ul><li>Employee QR badges for contactless attendance</li><li>Inventory barcode scanning for stock management</li><li>Payment QR codes for invoices</li><li>ZXing library (Java) for generation and decoding</li></ul>`},
+  facedetection:{icon:'👤',title:'Face Detection',sub:'AI-Powered Recognition',body:`<p>Integrated face detection for identity verification in HRMS and attendance modules.</p><h4>Implementation</h4><ul><li>OpenCV / face-api.js for browser-based detection</li><li>Liveness detection to prevent photo spoofing</li><li>Face enrollment flow during employee onboarding</li><li>Verification during attendance check-in</li></ul>`},
+  indiamart:{icon:'🏪',title:'IndiaMart API',sub:'B2B Lead Integration',body:`<p>Integrated IndiaMart's Lead Manager API in BotBox for automatic lead capture and WhatsApp follow-up automation.</p><h4>Integration flow</h4><ul><li>Poll IndiaMart Lead API for new leads</li><li>Parse lead data (name, phone, product interest)</li><li>Trigger WhatsApp message via BotBox automation</li><li>Score and assign leads to sales team</li><li>Track response rates and follow-up scheduling</li></ul>`},
+  cloudpanel:{icon:'☁️',title:'CloudPanel',sub:'Web Hosting Control Panel',body:`<p>Use CloudPanel to manage Linux server deployments for production Spring Boot and PHP applications.</p><h4>Tasks I handle</h4><ul><li>Nginx virtual host configuration</li><li>SSL certificate installation (Let's Encrypt)</li><li>Java JAR deployment with PM2/systemd</li><li>MySQL/MariaDB database management</li><li>File transfers via WinSCP / FileZilla</li></ul>`}
+};
+
+const CERTS = {
+  jspiders:{icon:'🎓',title:'Full Stack Developer Certification',sub:'JSpiders — Hyderabad · Sep 2022 – Apr 2023',body:`<p>7-month intensive hands-on certification from JSpiders Hyderabad — one of South India's top Java training institutes.</p><h4>Curriculum Covered</h4><ul><li>Core Java — OOP, Collections, Exception Handling, Multithreading</li><li>Java 8 — Streams, Lambda, Functional Interfaces, Optional</li><li>Spring Framework — IoC, DI, Spring MVC, Spring Boot</li><li>Hibernate / JPA — ORM, JPQL, relationships</li><li>Spring Security — JWT, role-based auth</li><li>Microservices — service decomposition, REST communication</li><li>Angular — components, services, routing, reactive forms</li><li>MySQL — normalization, joins, stored procedures</li><li>Real-world project: Built a full ERP module as final project</li></ul><h4>Duration</h4><p>September 2022 to April 2023 · Received certification upon completion</p>`},
+  mysql:{icon:'🗄️',title:'Advanced MySQL & Database Design',sub:'Professional Certification',body:`<p>Advanced database certification covering production-grade MySQL design and optimization.</p><h4>Topics Covered</h4><ul><li>Database normalization (1NF, 2NF, 3NF, BCNF)</li><li>Complex JOINs — INNER, LEFT, RIGHT, FULL, CROSS, SELF</li><li>Indexes — B-tree, covering, composite, partial</li><li>Views — updatable and non-updatable</li><li>Stored Procedures and Functions</li><li>Triggers — BEFORE/AFTER INSERT/UPDATE/DELETE</li><li>Transactions — ACID properties, isolation levels</li><li>Query optimization — EXPLAIN, index hints, query rewriting</li><li>ER Diagram design from requirements</li></ul>`},
+  webdev:{icon:'🌐',title:'Full Stack Web Development',sub:'Web Development Bootcamp',body:`<p>Comprehensive web development training covering the full modern stack from HTML to deployment.</p><h4>Topics Covered</h4><ul><li>HTML5 — semantic markup, accessibility, SEO</li><li>CSS3 — Flexbox, Grid, animations, responsive design</li><li>JavaScript ES6+ — async/await, Promises, modules</li><li>Angular — SPA architecture, routing, services</li><li>REST API design and consumption</li><li>Git — branching, pull requests, CI/CD basics</li><li>Deployment — Linux server, Nginx, domain setup</li></ul>`}
+};
+
+function openModal(icon,title,sub,body){
+  document.getElementById('micon').textContent=icon;
+  document.getElementById('mtit').textContent=title;
+  document.getElementById('msub').textContent=sub;
+  document.getElementById('mbody').innerHTML=body;
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){
+  document.getElementById('modal').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.getElementById('modal').addEventListener('click',e=>{if(e.target===document.getElementById('modal'))closeModal();});
+
+// Wire tech tags
+document.querySelectorAll('.tt[data-tech]').forEach(el=>{
+  el.addEventListener('click',()=>{
+    const k=el.dataset.tech;const d=TECH[k];
+    if(d)openModal(d.icon,d.title,d.sub,d.body);
+  });
+});
+// Wire angular topics
+document.querySelectorAll('.at[data-tech]').forEach(el=>{
+  el.addEventListener('click',()=>{
+    const k=el.dataset.tech;const d=TECH[k];
+    if(d)openModal(d.icon,d.title,d.sub,d.body);
+  });
+});
+// Wire certs
+document.querySelectorAll('.certc[data-cert]').forEach(el=>{
+  el.addEventListener('click',()=>{
+    const k=el.dataset.cert;const d=CERTS[k];
+    if(d)openModal(d.icon,d.title,d.sub,d.body);
+  });
+});
+
+// ===== LOADING =====
+window.addEventListener('load',()=>{setTimeout(()=>{document.body.classList.add('loaded');},2000);});
+
+// ===== CURSOR =====
+const cur=document.getElementById('cur'),curR=document.getElementById('curR');
+let mx=-100,my=-100,rx=-100,ry=-100;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+(function ac(){cur.style.left=mx+'px';cur.style.top=my+'px';rx+=(mx-rx)*.12;ry+=(my-ry)*.12;curR.style.left=rx+'px';curR.style.top=ry+'px';requestAnimationFrame(ac);})();
+document.querySelectorAll('a,button,.tt,.at,.certc').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.width='20px';cur.style.height='20px';curR.style.width='58px';curR.style.height='58px';});
+  el.addEventListener('mouseleave',()=>{cur.style.width='12px';cur.style.height='12px';curR.style.width='38px';curR.style.height='38px';});
+});
+
+// ===== SCROLL PROGRESS =====
+const sp=document.getElementById('sp');
+window.addEventListener('scroll',()=>{const s=document.documentElement.scrollTop,h=document.documentElement.scrollHeight-window.innerHeight;sp.style.transform=`scaleX(${s/h})`;});
+
+// ===== THEME =====
+const tgt=document.getElementById('tgt');let dark=true;
+tgt.addEventListener('click',()=>{dark=!dark;document.documentElement.setAttribute('data-theme',dark?'dark':'light');tgt.textContent=dark?'🌙':'☀️';});
+
+// ===== THREE.JS BG =====
+(function(){
+  const canvas=document.getElementById('bgc');
+  const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true});
+  renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+  renderer.setSize(innerWidth,innerHeight);
+  const scene=new THREE.Scene();
+  const camera=new THREE.PerspectiveCamera(75,innerWidth/innerHeight,.1,1000);
+  camera.position.z=30;
+
+  // Particles
+  const N=1000,geo=new THREE.BufferGeometry(),pos=new Float32Array(N*3);
+  for(let i=0;i<N*3;i++)pos[i]=(Math.random()-.5)*90;
+  geo.setAttribute('position',new THREE.BufferAttribute(pos,3));
+  const pmat=new THREE.PointsMaterial({size:.12,color:0x00e5ff,transparent:true,opacity:.45});
+  scene.add(new THREE.Points(geo,pmat));
+
+  // Shapes
+  const shapes=[];
+  const geos2=[new THREE.IcosahedronGeometry(1.4,0),new THREE.OctahedronGeometry(1.1,0),new THREE.TetrahedronGeometry(1.2,0),new THREE.TorusGeometry(.9,.3,8,12)];
+  const cols=[0x00e5ff,0x7c3aed,0x1e40af,0x0891b2];
+  for(let i=0;i<7;i++){
+    const m=new THREE.MeshBasicMaterial({color:cols[i%4],wireframe:true,transparent:true,opacity:.09});
+    const mesh=new THREE.Mesh(geos2[i%4],m);
+    mesh.position.set((Math.random()-.5)*44,(Math.random()-.5)*22,(Math.random()-.5)*10-6);
+    mesh.userData={rx:(Math.random()-.5)*.0025,ry:(Math.random()-.5)*.003};
+    scene.add(mesh);shapes.push(mesh);
+  }
+
+  let mx2=0,my2=0;
+  document.addEventListener('mousemove',e=>{mx2=(e.clientX/innerWidth-.5)*.9;my2=(e.clientY/innerHeight-.5)*.9;});
+  window.addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);});
+
+  (function anim(){
+    requestAnimationFrame(anim);
+    pmat.color.setHex(document.documentElement.getAttribute('data-theme')==='light'?0x7c3aed:0x00e5ff);
+    shapes.forEach(s=>{s.rotation.x+=s.userData.rx;s.rotation.y+=s.userData.ry;});
+    camera.position.x+=(mx2*3-camera.position.x)*.03;
+    camera.position.y+=(-my2*2-camera.position.y)*.03;
+    renderer.render(scene,camera);
+  })();
+})();
+
+// ===== TYPEWRITER =====
+const roles=['Full Stack Developer','Java Backend Engineer','Spring Boot Developer','Angular Developer','Software Engineer'];
+let ri=0,ci=0,del=false;
+const tt=document.getElementById('tt');
+function type(){
+  const w=roles[ri];tt.textContent=del?w.slice(0,ci--):w.slice(0,ci++);
+  let d=del?55:95;
+  if(!del&&ci===w.length+1){d=1800;del=true;}
+  if(del&&ci===0){del=false;ri=(ri+1)%roles.length;d=380;}
+  setTimeout(type,d);
+}
+setTimeout(type,1200);
+
+// ===== COUNTERS =====
+function animCounter(el){
+  const t=+el.dataset.target;let c=0;
+  const step=Math.ceil(t/40);
+  const iv=setInterval(()=>{c=Math.min(c+step,t);el.textContent=c;if(c>=t)clearInterval(iv);},40);
+}
+
+// ===== REVEAL + SKILL BARS =====
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting)return;
+    e.target.classList.add('vi');
+    e.target.querySelectorAll('.skbf').forEach(b=>b.style.width=b.dataset.width+'%');
+    e.target.querySelectorAll('.counter').forEach(animCounter);
+    obs.unobserve(e.target);
+  });
+},{threshold:.14});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+const skobs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(!e.isIntersecting)return;e.target.querySelectorAll('.skbf').forEach(b=>b.style.width=b.dataset.width+'%');skobs.unobserve(e.target);});
+},{threshold:.18});
+document.querySelectorAll('.skgrp').forEach(el=>skobs.observe(el));
+
+const hso=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(!e.isIntersecting)return;e.target.querySelectorAll('.counter').forEach(animCounter);hso.unobserve(e.target);});
+},{threshold:.5});
+const hst=document.querySelector('.hst');if(hst)hso.observe(hst);
+
+// ===== FORM =====
+function handleForm(btn){
+  btn.disabled=true;btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Sending...';
+  setTimeout(()=>{btn.innerHTML='✓ Sent!';document.getElementById('fsuc').style.display='block';},1500);
+}
+
+// ===== NAV SCROLL =====
+window.addEventListener('scroll',()=>{
+  document.getElementById('nb').style.background=scrollY>60?'rgba(4,4,10,.96)':'rgba(4,4,10,.82)';
+});
+</script>
+</body>
+</html>

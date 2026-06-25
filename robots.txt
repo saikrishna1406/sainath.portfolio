@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://saikrishna1406.github.io/sainath.portfolio/sitemap.xml
